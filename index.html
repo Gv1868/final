@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Art Exhibition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #3a6186, #89253e);
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.6);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .artworks {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .artworks img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border: 2px solid white;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .artworks img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px white;
+        }
+        .art-description {
+            max-width: 300px;
+            text-align: left;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        .floor-plan {
+            margin: 2rem auto;
+            max-width: 90%;
+            border: 2px solid white;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 5px solid white;
+        }
+        .modal.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Abstract Expressionism in Space</h1>
+        <p>Curated by Gavin Campbell</p>
+    </header>
+
+    <section id="concept">
+        <h2>Artistic Concept</h2>
+        <p>
+            This exhibition brings the abstract dynamism of Gheorghe Virtosu into dialogue with the
+            historic architecture of Old Main. The vibrant, swirling forms mirror the layered
+            histories and complexities of academic pursuit, transforming public spaces into arenas
+            of emotion and expression. The pieces of art would fit perfectly in the old main building, bringing abstract art to one of the most creative buildings on Wayne State Campus.
+        </p>
+    </section>
+
+    <section id="floor-plan">
+        <h2>Exhibition Floor Plan</h2>
+        <img src="images/floorplan.jpeg" alt="Floor Plan" class="floor-plan">
+    </section>
+
+    <section id="artworks">
+        <h2>Featured Artworks</h2>
+        <div class="artworks">
+            <div>
+                <img src="images/abandoned.jpg" alt="Artwork 1" data-caption="Gheorghe Virtosu / 'Genesis' / Oil on Canvas / 100x100 cm / 2018">
+                <div class="art-description">"Abandoned" depicts the conflict between sorrow and fleeting optimism. The piece inspires thoughts of loneliness and desire with its predominantly blue and black palette, highlighted with brilliant but restrained orange and yellow. The dominant figure, deformed and ugly, represents the sorrow of abandonment, contrasted with the delicate promise of rejuvenation. Virtosu's trademark impasto technique adds texture and depth, resulting in a dynamic interplay of color and emotion that reflects his profound investigation of human frailty.</div>
+            </div>
+            <div>
+                <img src="images/abba.jpg" alt="Artwork 2" data-caption="Gheorghe Virtosu / 'Cosmic Embrace' / Oil on Canvas / 120x120 cm / 2020">
+                <div class="art-description">"ABBA" is an evocative celebration of color and shape, combining dissonance and melody in a symphony of painterly abstraction. Vîrtosu's painstaking layering of drips, smears, and strokes creates a dynamic tension between past traditions and potential futures. The vibrant colors and chaotic yet balanced composition highlight his ability to combine instinct with technique. This 2015 piece captures the essence of his original exploration, redefining the boundaries of figure and media to create a hallucinogenic and stimulating visual experience.</div>
+            </div>
+            <div>
+                <img src="images/campdavid.jpg" alt="Artwork 3" data-caption="Gheorghe Virtosu / 'Inner Dimensions' / Oil on Canvas / 150x150 cm / 2021">
+                <div class="art-description">"2000 Camp David Summit" depicts the emotional turbulence of a historic negotiation, combining hope, frustration, and conflict. Virtosu's powerful composition of dark blues, purples, and brilliant accents portrays the event's stress and unresolved character. The painting's broken and uneven patterns suggest a tumultuous interplay of expectations and disappointments, evoking Mesoamerican themes of struggle and survival. This stunning piece explores the ongoing intricacy of political discourse as well as the human emotions that are inextricably linked to history.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Wayne State</p>
+    </footer>
+
+    <div class="modal" id="modal">
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const modalImg = modal.querySelector('img');
+        const images = document.querySelectorAll('.artworks img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modalImg.src = img.src;
+                modalImg.alt = img.alt;
+                modal.classList.add('active');
+            });
+        });
+
+        modal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>
